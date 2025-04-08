@@ -19,11 +19,20 @@ public class BankAccount {
     }
 
     public void deposit(double amount) {
-
+        if (amount <= 0) {
+            throw new IllegalArgumentException("Deposit amount must be positive.");
+        }
+        this.balance += amount;
     }
 
     public void withdraw(double amount) {
-
+        if (amount <= 0) {
+            throw new IllegalArgumentException("Withdrawal amount must be positive.");
+        }
+        if (amount > this.balance) {
+            throw new IllegalArgumentException("Withdrawal exceeds balance.");
+        }
+        this.balance -= amount;
     }
 
     public void transfer(BankAccount targetAccount, double amount) {
