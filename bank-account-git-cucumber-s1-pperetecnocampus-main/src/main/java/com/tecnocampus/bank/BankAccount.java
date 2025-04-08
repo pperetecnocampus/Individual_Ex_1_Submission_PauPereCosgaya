@@ -7,7 +7,15 @@ public class BankAccount {
     private double balance;
 
     public BankAccount(String owner, double initialBalance) {
-
+        if (owner == null || owner.trim().isEmpty()) {
+            throw new IllegalArgumentException("Owner name must be valid.");
+        }
+        if (initialBalance < 0) {
+            throw new IllegalArgumentException("Initial balance cannot be negative.");
+        }
+        this.owner = owner;
+        this.balance = initialBalance;
+        this.accountId = String.valueOf(nextId++);
     }
 
     public void deposit(double amount) {
