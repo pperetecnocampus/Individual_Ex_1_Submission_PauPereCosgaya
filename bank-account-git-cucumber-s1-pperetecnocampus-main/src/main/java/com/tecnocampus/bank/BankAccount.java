@@ -36,7 +36,17 @@ public class BankAccount {
     }
 
     public void transfer(BankAccount targetAccount, double amount) {
-
+        if (targetAccount == null) {
+            throw new IllegalArgumentException("Target account cannot be null.");
+        }
+        if (amount <= 0) {
+            throw new IllegalArgumentException("Transfer amount must be positive.");
+        }
+        if (amount > this.balance) {
+            throw new IllegalArgumentException("Transfer exceeds balance.");
+        }
+        this.withdraw(amount);
+        targetAccount.deposit(amount);
     }
 
     public String getAccountId() {
