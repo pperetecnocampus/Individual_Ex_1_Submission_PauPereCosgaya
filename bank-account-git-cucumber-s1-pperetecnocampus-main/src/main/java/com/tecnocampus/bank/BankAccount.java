@@ -1,6 +1,10 @@
 package com.tecnocampus.bank;
 
 public class BankAccount {
+    private static int nextId = 1;
+    private final String accountId;
+    private final String owner;
+    private double balance;
 
     public BankAccount(String owner, double initialBalance) {
 
