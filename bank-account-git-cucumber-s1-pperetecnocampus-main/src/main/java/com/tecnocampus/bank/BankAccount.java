@@ -49,15 +49,22 @@ public class BankAccount {
         targetAccount.deposit(amount);
     }
 
-    public String getAccountId() {
-        return "";
+     public String getAccountId() {
+        return this.accountId;
     }
 
     public String getOwner() {
-        return "";
+        return this.owner;
     }
 
     public double getBalance() {
-        return 0;
+        return this.balance;
+    }
+
+    public String getAccountDetails() {
+        return String.format(
+            "{\n  \"accountNumber\": \"%s\",\n  \"owner\": \"%s\",\n  \"balance\": %.2f\n}",
+            this.accountId, this.owner, this.balance
+        );
     }
 }
